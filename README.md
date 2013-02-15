@@ -1,2 +1,1 @@
-cantata-native
-==============
+cantata native application

@@ -1,6 +1,6 @@
-/**
- * This file contains the Tizen application entry point.
- */
+//
+// This file contains the Tizen application entry point.
+//
 #include "cantata.h"
 
 using namespace Tizen::Base;
@@ -11,33 +11,23 @@ extern "C"
 {
 #endif // __cplusplus
 
-_EXPORT_ int OspMain(int argc, char *pArgv[]);
 
-/**
- * The entry function of Tizen application called by the operating system.
- */
-int
-OspMain(int argc, char *pArgv[])
+//
+// The entry function of Tizen application called by the operating system.
+//
+_EXPORT_ int
+OspMain(int argc, char* pArgv[])
 {
-	result r = E_SUCCESS;
-
 	AppLog("Application started.");
-	ArrayList* pArgs = new ArrayList();
-	pArgs->Construct();
+	ArrayList args(SingleObjectDeleter);
+	args.Construct();
 	for (int i = 0; i < argc; i++)
 	{
-		pArgs->Add(*(new String(pArgv[i])));
+		args.Add(new (std::nothrow) String(pArgv[i]));
 	}
 
-	r = Tizen::App::UiApp::Execute(cantataApp::CreateInstance, pArgs);
-	if (IsFailed(r))
-	{
-		AppLogException("Application execution failed-[%s].", GetErrorMessage(r));
-		r &= 0x0000FFFF;
-	}
-
-	pArgs->RemoveAll(true);
-	delete pArgs;
+	result r = Tizen::App::UiApp::Execute(cantataApp::CreateInstance, &args);
+	TryLog(r == E_SUCCESS, "[%s] Application execution failed", GetErrorMessage(r));
 	AppLog("Application finished.");
 
 	return static_cast<int>(r);

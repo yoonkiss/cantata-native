@@ -19,7 +19,7 @@ cantataFormFactory::CreateFormN(const Tizen::Base::String& formId, const Tizen::
 	AppAssert(pSceneManager);
 	Tizen::Ui::Controls::Form* pNewForm = null;
 
-	if (formId == L"MainForm")
+	if (formId == L"IDF_FORM")
 	{
 		cantataMainForm* pForm = new cantataMainForm();
 		pForm->Initialize();

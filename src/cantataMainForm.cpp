@@ -1,6 +1,6 @@
 #include <FApp.h>
 #include "cantataMainForm.h"
-#include <stdlib.h>
+#include "CantataWifiManager.h"
 
 using namespace Tizen::Base;
 using namespace Tizen::App;
@@ -8,12 +8,16 @@ using namespace Tizen::Ui;
 using namespace Tizen::Ui::Controls;
 using namespace Tizen::Ui::Scenes;
 
+
 cantataMainForm::cantataMainForm(void)
 {
+	pNode = new CantataNode;
+	pNode->Construct();
 }
 
 cantataMainForm::~cantataMainForm(void)
 {
+	delete pNode;
 }
 
 bool
@@ -61,31 +65,30 @@ cantataMainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionI
 {
 	SceneManager* pSceneManager = SceneManager::GetInstance();
 	AppAssert(pSceneManager);
+	Tizen::Ui::Controls::Button *pButtonOk = static_cast<Button*>(GetControl(L"IDC_BUTTON_OK"));
 
 	switch(actionId)
 	{
-	case ID_BUTTON_OK: {
-		AppLog("OK Button is clicked!");
-		String appName = App::GetInstance()->GetAppRootPath() + App::GetInstance()->GetAppName();
-		String resPath = App::GetInstance()->GetAppResourcePath();
-		const wchar_t *pAppPath = (const wchar_t*)appName.GetPointer();
-		const wchar_t *pResPath = (const wchar_t*)resPath.GetPointer();
-		char app_path[512];
-		char res_path[512];
-		char js_path[512];
-		char node_path[512];
-		char command[512];
+	case ID_BUTTON_OK:
+		//pNode->forkExec();
+		if (pNode->isRunning() == false) {
+			AppLog("Node service start");
+			pNode->Start();
 
-		wcstombs(app_path, pAppPath, appName.GetLength()+1);
-		wcstombs(res_path, pResPath, resPath.GetLength()+1);
-		sprintf(node_path, "%s%s", res_path,"node");
-		sprintf(js_path, "%s%s", res_path,"app.js");
+			if (pButtonOk != null)
+			{
+				pButtonOk->SetText("Running service");
+			}
 
-		sprintf(command, "%s %s", node_path, js_path);
-		system(command);
+		} else {
+			AppLog("Node service stop");
+			pButtonOk->SetText("Start service");
 
+			//pNode->stopService();
+			//pNode->Join();
+			delete pNode;
+		}
 		break;
-	}
 
 	default:
 		break;
