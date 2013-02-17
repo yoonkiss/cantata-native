@@ -121,7 +121,7 @@
 									<listOptionValue builtIn="false" value="-losp-shell-core"/>
 									<listOptionValue builtIn="false" value="-lxml2"/>
 								</option>
-								<option id="gnu.cpp.link.option.libs.973951829" superClass="gnu.cpp.link.option.libs" valueType="libs">
+								<option id="gnu.cpp.link.option.libs.973951829" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="node"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.409827423" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -138,7 +138,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="res"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="inc"/>
 					</sourceEntries>
 				</configuration>
@@ -503,6 +502,7 @@
 							<tool command="clang++" id="org.tizen.nativecpp.tool.sbi.gnu.cpp.linker.da.1656798140" name="C++ Linker" superClass="org.tizen.nativecpp.tool.sbi.gnu.cpp.linker.da">
 								<option id="gnu.cpp.link.option.libs.1610083504" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="node"/>
+									<listOptionValue builtIn="false" value="daprobe"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.864447930" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${SDK_INSTALL_PATH}/library/da/x86&quot;"/>
@@ -642,6 +642,7 @@
 							<tool command="clang++" id="org.tizen.nativecpp.tool.sbi.gnu.cpp.linker.da.2117661012" name="C++ Linker" superClass="org.tizen.nativecpp.tool.sbi.gnu.cpp.linker.da">
 								<option id="gnu.cpp.link.option.libs.2040317904" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="node"/>
+									<listOptionValue builtIn="false" value="daprobe"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.970399730" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${SDK_INSTALL_PATH}/library/da/arm&quot;"/>
