@@ -6,7 +6,7 @@ How to launch cantata-native application to a tizen target:
     * Tizen SDK version 2.0 or higher
 
 ### Launch cantata native application using CLI:
-    Noy supported yet
+    Not supported yet
     
 ### Launch cantata native application using eclipse (Ubuntu only):
 1. getting sources
