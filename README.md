@@ -5,6 +5,9 @@ How to launch cantata-native application to a tizen target:
 ### Prerequisites (Unix only):
     * Tizen SDK version 2.0 or higher
 
+### Launch cantata native application using CLI:
+    Noy supported yet
+    
 ### Launch cantata native application using eclipse (Ubuntu only):
 1. getting sources
 
@@ -23,22 +26,7 @@ How to launch cantata-native application to a tizen target:
     
       cp ./cantata-web/* ./cantata-native/res/ -R
       
-    2. import cantata-native and cantata-jsbind project to your Tizen IDE
-    
-    3. in case cantata-jsbind, add include path: C/C++ build > Settings > Tool Settings > C++ Compiler > Includes
-
-      ~/your working directory/cantata-node/node/src
-
-      ~/your working directory/cantata-node/node/deps/uv/include
-
-      ~/your working directory/cantata-node/node/deps/v8/include
-
-    4. build cantata-jsbind project
-      tizen-native.node file will be generated on the build configuration folder
-      
-      copy tizen-native.node to cantata-native's res/routes folder
-    
-    5. install node to cantata-native project
+    2. install node to cantata-native project
     
       $ cd cantata-node
  
@@ -48,6 +36,22 @@ How to launch cantata-native application to a tizen target:
  
       $ cp ./output/node ../cantata-native/res/libnode.so
 
+    3. import cantata-native and cantata-jsbind project to your Tizen IDE
+    
+    4. in case cantata-jsbind, add include path: C/C++ build > Settings > Tool Settings > C++ Compiler > Includes
+
+      ~/your working directory/cantata-node/node/src
+
+      ~/your working directory/cantata-node/node/deps/uv/include
+
+      ~/your working directory/cantata-node/node/deps/v8/include
+
+    5. build cantata-jsbind project
+      tizen-native.node file will be generated on the build configuration folder
+      
+      copy tizen-native.node to cantata-native's res/routes folder
+    
+    
 3. Launch project
 
      build cantata-native project and run the project
