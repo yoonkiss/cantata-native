@@ -3,7 +3,7 @@
 
 #include <FBase.h>
 #include <FUi.h>
-
+#include "CantataNode.h"
 
 class cantataMainForm
 	: public Tizen::Ui::Controls::Form
@@ -28,6 +28,9 @@ public:
 
 protected:
 	static const int ID_BUTTON_OK = 101;
+
+private:
+	CantataNode* pNode;
 };
 
 #endif	//_CANTATA_MAIN_FORM_H_

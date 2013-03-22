@@ -1,5 +1,5 @@
-#ifndef _CANTATAFRAME_H_
-#define _CANTATAFRAME_H_
+#ifndef _CANTATA_FRAME_H_
+#define _CANTATA_FRAME_H_
 
 #include <FBase.h>
 #include <FUi.h>
@@ -17,4 +17,4 @@ public:
 	virtual result OnTerminating(void);
 };
 
-#endif	//_CANTATAFRAME_H_
+#endif	//_CANTATA_FRAME_H_

@@ -26,34 +26,34 @@ public:
 
 public:
 	// Called when the UiApp is initializing.
-	bool OnAppInitializing(Tizen::App::AppRegistry& appRegistry);
+	virtual bool OnAppInitializing(Tizen::App::AppRegistry& appRegistry);
 
 	// Called when the UiApp initializing is finished. 
-	bool OnAppInitialized(void); 
+	virtual bool OnAppInitialized(void); 
 
 	// Called when the UiApp is requested to terminate. 
-	bool OnAppWillTerminate(void); 
+	virtual bool OnAppWillTerminate(void); 
 
 	// Called when the UiApp is terminating.
-	bool OnAppTerminating(Tizen::App::AppRegistry& appRegistry, bool forcedTermination = false);
+	virtual bool OnAppTerminating(Tizen::App::AppRegistry& appRegistry, bool forcedTermination = false);
 
 	// Called when the UiApp's frame moves to the top of the screen.
-	void OnForeground(void);
+	virtual void OnForeground(void);
 
 	// Called when this UiApp's frame is moved from top of the screen to the background.
-	void OnBackground(void);
+	virtual void OnBackground(void);
 
 	// Called when the system memory is not sufficient to run the UiApp any further.
-	void OnLowMemory(void);
+	virtual void OnLowMemory(void);
 
 	// Called when the battery level changes.
-	void OnBatteryLevelChanged(Tizen::System::BatteryLevel batteryLevel);
+	virtual void OnBatteryLevelChanged(Tizen::System::BatteryLevel batteryLevel);
 
 	// Called when the screen turns on.
-	void OnScreenOn(void);
+	virtual void OnScreenOn(void);
 
 	// Called when the screen turns off.
-	void OnScreenOff(void);
+	virtual void OnScreenOff(void);
 };
 
-#endif //  _CANTATA_H_
+#endif // _CANTATA_H_

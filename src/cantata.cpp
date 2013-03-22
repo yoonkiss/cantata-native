@@ -8,8 +8,6 @@
 
 #include "cantata.h"
 #include "cantataFrame.h"
-#include "cantataFormFactory.h"
-#include "cantataPanelFactory.h"
 
 using namespace Tizen::App;
 using namespace Tizen::Base;
@@ -63,18 +61,6 @@ cantataApp::OnAppInitialized(void)
 	pcantataFrame->Construct();
 	pcantataFrame->SetName(L"cantata");
 	AddFrame(*pcantataFrame);
-
-	// Prepare Scene management.
-	SceneManager* pSceneManager = SceneManager::GetInstance();
-	static cantataFormFactory formFactory;
-	static cantataPanelFactory panelFactory;
-	pSceneManager->RegisterFormFactory(formFactory);
-	pSceneManager->RegisterPanelFactory(panelFactory);
-	pSceneManager->RegisterScene(L"MainScene", L"MainForm", L"");
-
-	// Goto the scene.
-	if (pSceneManager->GoForward(ForwardSceneTransition(L"MainScene")) != E_SUCCESS)
-		return false;
 
 	return true;
 }
