@@ -1,3 +1,6 @@
+#ifndef _CANTATA_NODE_H_
+#define _CANTATA_NODE_H_
+
 #include <FBase.h>
 #include <FApp.h>
 
@@ -18,3 +21,4 @@ private:
     volatile bool isRunningThread;
 };
 
+#endif

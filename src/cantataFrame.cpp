@@ -1,6 +1,7 @@
 #include "cantataFrame.h"
 #include "cantataFormFactory.h"
 #include "cantataPanelFactory.h"
+#include "AppResourceId.h"
 
 using namespace Tizen::Base;
 using namespace Tizen::Ui;
@@ -27,7 +28,8 @@ cantataFrame::OnInitializing(void)
 	pSceneManager->RegisterScene(L"workflow");
 
 	// Goto the scene.
-	result r = pSceneManager->GoForward(SceneTransitionId(L"ID_SCNT_MAINSCENE"));
+	result r = pSceneManager->GoForward(SceneTransitionId(TR_SPLASH));
+	
 
 	// TODO: Add your initialization code here
 	return r;

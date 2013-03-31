@@ -1,5 +1,8 @@
 #include "cantataFormFactory.h"
 #include "cantataMainForm.h"
+#include "AppResourceId.h"
+#include "SplashForm.h"
+#include "MainForm.h"
 
 using namespace Tizen::Ui::Scenes;
 
@@ -19,15 +22,20 @@ cantataFormFactory::CreateFormN(const Tizen::Base::String& formId, const Tizen::
 	AppAssert(pSceneManager);
 	Tizen::Ui::Controls::Form* pNewForm = null;
 
-	if (formId == L"IDF_FORM")
+	if (formId == FRM_SPLASH)
 	{
-		cantataMainForm* pForm = new cantataMainForm();
+		SplashForm* pForm = new SplashForm();
 		pForm->Initialize();
-		pSceneManager->AddSceneEventListener(sceneId, *pForm);
 		pNewForm = pForm;
 	}
-	// TODO:
-	// Add your form creation code here
+	else if (formId == FRM_MAIN)
+	{
+		MainForm* pForm = new MainForm();
+		pForm->Initialize();
+		pNewForm = pForm;
+	}
+
+
 
 	return pNewForm;
 }

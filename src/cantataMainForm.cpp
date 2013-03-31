@@ -1,6 +1,7 @@
 #include <FApp.h>
 #include "cantataMainForm.h"
 #include "CantataWifiManager.h"
+#include  "AppResourceId.h"
 
 using namespace Tizen::Base;
 using namespace Tizen::App;
@@ -23,7 +24,7 @@ cantataMainForm::~cantataMainForm(void)
 bool
 cantataMainForm::Initialize(void)
 {
-	Construct(L"IDF_FORM");
+	Construct( FRM_SPLASH );
 
 	return true;
 }
@@ -66,6 +67,7 @@ cantataMainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionI
 	SceneManager* pSceneManager = SceneManager::GetInstance();
 	AppAssert(pSceneManager);
 	Tizen::Ui::Controls::Button *pButtonOk = static_cast<Button*>(GetControl(L"IDC_BUTTON_OK"));
+	
 
 	switch(actionId)
 	{
