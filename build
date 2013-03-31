@@ -52,9 +52,13 @@ mkdir -p "$TARGET/bin"
 i386-linux-gnueabi-g++ -o"$TARGET/cantata.exe" $O_LIST -L"$DIR_HOME/lib" -Xlinker --as-needed -pie -lpthread -Xlinker -rpath=\$ORIGIN/../lib --sysroot="$SYSROOT" -L"$TIZEN_LIB" -L"$OSP_LIB" -losp-appfw -losp-uifw -losp-image -losp-json -losp-ime -losp-net -lpthread -losp-content -losp-locations -losp-telephony -losp-uix -losp-media -losp-messaging -losp-web -losp-social -losp-wifi -losp-bluetooth -losp-nfc -losp-face -losp-speech-tts -losp-speech-stt -losp-shell -losp-shell-core -lxml2 -losp-vision -ldl
 
 cp $DIR_HOME/manifest.xml $MANIFEST
+mkdir -p $DIR_HOME/res
 cp -R $DIR_HOME/res $MANIFEST
+mkdir -p $DIR_HOME/lib
 cp -R $DIR_HOME/lib $MANIFEST
+mkdir -p $DIR_HOME/icons
 cp -R $DIR_HOME/icons $MANIFEST
+mkdir -p $DIR_HOME/data
 cp -R $DIR_HOME/data $MANIFEST
 
 cd ../
