@@ -4,12 +4,12 @@
 #include <FUi.h>
 
 
-class cantataFormFactory
+class FormFactory
 	: public Tizen::Ui::Scenes::IFormFactory
 {
 public:
-	cantataFormFactory(void);
-	virtual ~cantataFormFactory(void);
+	FormFactory(void);
+	virtual ~FormFactory(void);
 
 	virtual Tizen::Ui::Controls::Form* CreateFormN(const Tizen::Base::String& formId, const Tizen::Ui::Scenes::SceneId& sceneId);
 };

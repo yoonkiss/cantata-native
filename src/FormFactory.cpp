@@ -1,5 +1,5 @@
-#include "cantataFormFactory.h"
-#include "cantataMainForm.h"
+#include "FormFactory.h"
+#include "MainForm.h"
 #include "AppResourceId.h"
 #include "SplashForm.h"
 #include "MainForm.h"
@@ -7,16 +7,16 @@
 using namespace Tizen::Ui::Scenes;
 
 
-cantataFormFactory::cantataFormFactory(void)
+FormFactory::FormFactory(void)
 {
 }
 
-cantataFormFactory::~cantataFormFactory(void)
+FormFactory::~FormFactory(void)
 {
 }
 
 Tizen::Ui::Controls::Form*
-cantataFormFactory::CreateFormN(const Tizen::Base::String& formId, const Tizen::Ui::Scenes::SceneId& sceneId)
+FormFactory::CreateFormN(const Tizen::Base::String& formId, const Tizen::Ui::Scenes::SceneId& sceneId)
 {
 	SceneManager* pSceneManager = SceneManager::GetInstance();
 	AppAssert(pSceneManager);

@@ -5,12 +5,12 @@
 #include <FUi.h>
 
 
-class cantataFrame
+class MainFrame
 	: public Tizen::Ui::Controls::Frame
 {
 public:
-	cantataFrame(void);
-	virtual ~cantataFrame(void);
+	MainFrame(void);
+	virtual ~MainFrame(void);
 
 public:
 	virtual result OnInitializing(void);

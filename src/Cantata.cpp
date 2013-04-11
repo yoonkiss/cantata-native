@@ -6,8 +6,8 @@
  */
 
 
-#include "cantata.h"
-#include "cantataFrame.h"
+#include "Cantata.h"
+#include "MainFrame.h"
 
 using namespace Tizen::App;
 using namespace Tizen::Base;
@@ -57,7 +57,7 @@ cantataApp::OnAppInitialized(void)
 	// Comment.
 
 	// Create a Frame
-	cantataFrame* pcantataFrame = new cantataFrame();
+	MainFrame* pcantataFrame = new MainFrame();
 	pcantataFrame->Construct();
 	pcantataFrame->SetName(L"cantata");
 	AddFrame(*pcantataFrame);

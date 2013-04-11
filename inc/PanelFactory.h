@@ -1,15 +1,15 @@
-#ifndef _CANTATA_PANEL_FACTORY_H_
-#define _CANTATA_PANEL_FACTORY_H_
+#ifndef _PANEL_FACTORY_H_
+#define _PANEL_FACTORY_H_
 
 #include <FUi.h>
 
 
-class cantataPanelFactory
+class PanelFactory
 	: public Tizen::Ui::Scenes::IPanelFactory
 {
 public:
-	cantataPanelFactory(void);
-	virtual ~cantataPanelFactory(void);
+	PanelFactory(void);
+	virtual ~PanelFactory(void);
 
 	virtual Tizen::Ui::Controls::Panel* CreatePanelN(const Tizen::Base::String& panelId, const Tizen::Ui::Scenes::SceneId& sceneId);
 };

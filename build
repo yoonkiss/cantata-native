@@ -5,27 +5,22 @@ SCRIPT=`readlink -f $0`
 DIR_HOME=`dirname $SCRIPT`
 echo "HOME: $DIR_HOME"
 
-TIZEN_HOME="/home/bylee/tizen_sdk"
-SYSROOT="$TIZEN_HOME/platforms/tizen2.1/rootstraps/tizen-emulator-2.1.native"
-SYSROOT_LIB="$SYSROOT/lib"
-TIZEN_INC="$SYSROOT/usr/include"
-TIZEN_LIB="$SYSROOT/usr/lib"
-XML_INC="$TIZEN_INC/libxml2"
-OSP_INC="$TIZEN_INC/osp"
-OSP_LIB="$SYSROOT/usr/lib/osp"
+LIB_SYSROOT="$SYSROOT/lib"
+LIB_TIZEN="$SYSROOT/usr/lib"
+LIB_OSP="$SYSROOT/usr/lib/osp"
 
 export PATH="$PATH:$TIZEN_HOME/tools/i386-linux-gnueabi-gcc-4.5/bin"
-echo "Tizne Header: $TIZEN_INC"
-echo "OSP Header: $OSP_INC"
+echo "Tizne Header: $INC_TIZEN"
+echo "OSP Header: $INC_OSP"
 echo "OSP Lib: $OSP_LIB"
 
-MANIFEST=$DIR_HOME
-TARGET=$DIR_HOME/bin
-if [ -n "$1" ]
+if [ -z "$1" ]
 then
-	MANIFEST=$1
-    TARGET=$1/target
+	echo "Specify target"
 fi
+
+MANIFEST=$1
+TARGET=$1/target
 
 #cd ./Debug-Tizen-Emulator
 
@@ -43,14 +38,17 @@ do
 
 	O_LIST="$O_LIST $O_NAME"
 
-	i386-linux-gnueabi-g++ -I"pch" -D_DEBUG -I"$DIR_HOME/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fPIE -I"$TIZEN_INC" -I"$XML_INC" -I"$TIZEN_HOME/library" -I"$OSP_INC" -D_APP_LOG -MMD -MP -MF"$D_NAME" -MT"$D_NAME" -o "$O_NAME" "$SRC_NAME"
+	i386-linux-gnueabi-g++ -I"pch" -DNODE_STATIC -D_DEBUG -I"$DIR_HOME/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fPIE -I"$INC_TIZEN" -I"$INC_XML" -I"$TIZEN_HOME/library" -I"$INC_OSP" --sysroot="$SYSROOT" -D_APP_LOG -MMD -MP -MF"$D_NAME" -MT"$D_NAME" -o "$O_NAME" "$SRC_NAME"
 
 done;
 
 mkdir -p "$TARGET/bin"
 
-i386-linux-gnueabi-g++ -o"$TARGET/cantata.exe" $O_LIST -L"$DIR_HOME/lib" -Xlinker --as-needed -pie -lpthread -Xlinker -rpath=\$ORIGIN/../lib --sysroot="$SYSROOT" -L"$TIZEN_LIB" -L"$OSP_LIB" -losp-appfw -losp-uifw -losp-image -losp-json -losp-ime -losp-net -lpthread -losp-content -losp-locations -losp-telephony -losp-uix -losp-media -losp-messaging -losp-web -losp-social -losp-wifi -losp-bluetooth -losp-nfc -losp-face -losp-speech-tts -losp-speech-stt -losp-shell -losp-shell-core -lxml2 -losp-vision -ldl
+cp $LIB_NODE $DIR_HOME/lib/libnode.so
+echo "Linking..."
+i386-linux-gnueabi-g++ -o"$TARGET/cantata.exe" $O_LIST -L"$DIR_HOME/lib" -Xlinker --as-needed -pie -lpthread -Xlinker -rpath=\$ORIGIN/../lib --sysroot="$SYSROOT" -L"$LIB_TIZEN" -L"$LIB_OSP" -losp-appfw -losp-uifw -losp-image -losp-json -losp-ime -losp-net -lpthread -losp-content -losp-locations -losp-telephony -losp-uix -losp-media -losp-messaging -losp-web -losp-social -losp-wifi -losp-bluetooth -losp-nfc -losp-face -losp-speech-tts -losp-speech-stt -losp-shell -losp-shell-core -lxml2 -losp-vision -ldl -lnode
 
+echo "cp $DIR_HOME/manifest.xml $MANIFEST"
 cp $DIR_HOME/manifest.xml $MANIFEST
 mkdir -p $DIR_HOME/res
 cp -R $DIR_HOME/res $MANIFEST
@@ -60,8 +58,4 @@ mkdir -p $DIR_HOME/icons
 cp -R $DIR_HOME/icons $MANIFEST
 mkdir -p $DIR_HOME/data
 cp -R $DIR_HOME/data $MANIFEST
-
-cd ../
-echo "Finished building target: cantata.exe"
-echo "**** Build Finished ****"
 

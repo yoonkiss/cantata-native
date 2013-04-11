@@ -14,7 +14,6 @@ const String MainForm::DEFAULT_PORT = String( L"3000" );
 MainForm::MainForm(void)
 {
 	pNode = new CantataNode();
-	pNode->Construct();
 }
 
 MainForm::~MainForm(void)
@@ -86,8 +85,6 @@ MainForm::OnTerminating(void)
 {
 	result r = E_SUCCESS;
 
-	// TODO: Add your termination code here
-
 	return r;
 }
 
@@ -97,7 +94,6 @@ void
 MainForm::OnSceneActivatedN(const Tizen::Ui::Scenes::SceneId& previousSceneId,
 								const Tizen::Ui::Scenes::SceneId& currentSceneId, Tizen::Base::Collection::IList* pArgs)
 {
-	// TODO: Add your implementation codes here
 
 }
 
@@ -105,7 +101,6 @@ void
 MainForm::OnSceneDeactivated(const Tizen::Ui::Scenes::SceneId& currentSceneId,
 								const Tizen::Ui::Scenes::SceneId& nextSceneId)
 {
-	// TODO: Add your implementation codes here
 
 }
 
@@ -132,7 +127,7 @@ MainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionId)
 	UuId* uid = UuId::GenerateN();
 
 	String id;
-	AppLog( "Init" );
+	AppLog( "Action :%d", actionId );
 
 	switch(actionId)
 	{
@@ -140,7 +135,6 @@ MainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionId)
 		pTitle->SetShowState( false );
 		pPortLabel->SetShowState( true );
 		pPort->SetShowState( true );
-//		pPort->SetText( (const String) String( L"3000" ) );
 		pBtnConnect->SetShowState( false );
 		pBtnConfirm->SetShowState( true );
 		pAnimate1->SetShowState( false );
@@ -160,7 +154,7 @@ MainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionId)
 	case ACTION_CONFIRM:
 		if (pNode->isRunning() == false) {
 			AppLog("Node service start");
-			pNode->Start();
+			pNode->Run();
 			pTitle->SetShowState( true );
 			pAuthentication->SetShowState( false );
 			pCode->SetShowState( false );
@@ -173,17 +167,17 @@ MainForm::OnActionPerformed(const Tizen::Ui::Control& source, int actionId)
 		}
 		break;
 	case ACTION_CANCEL:
-		pNode->Stop();
-		pBtnCancel->SetShowState( false );
-		pSyncing->SetShowState( false );
-		pAnimate1->SetShowState( true );
-		pAnimate2->SetShowState( false );
-		pAnimate3->SetShowState( false );
-		pAnimate4->SetShowState( false );
-		pAnimate5->SetShowState( false );
-		pBtnConnect->SetShowState( true );
+		if ( pNode->isRunning() ) {
+			pBtnCancel->SetShowState( false );
+			pSyncing->SetShowState( false );
+			pAnimate1->SetShowState( true );
+			pAnimate2->SetShowState( false );
+			pAnimate3->SetShowState( false );
+			pAnimate4->SetShowState( false );
+			pAnimate5->SetShowState( false );
+			pBtnConnect->SetShowState( true );
+		}
 		break;
-
 	default:
 		break;
 	}

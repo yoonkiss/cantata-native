@@ -28,12 +28,8 @@ CantataNode::CantataNode(void) {
 CantataNode::~CantataNode(void) {
 }
 
-result CantataNode::Construct(void) {
-    return Thread::Construct();
-}
-
 Tizen::Base::Object* CantataNode::Run(void) {
-    char *argv2[2];
+    char **argv2;
 
     Tizen::Base::String appName = Tizen::App::App::GetInstance()->GetAppRootPath() + Tizen::App::App::GetInstance()->GetAppName();
     Tizen::Base::String resPath = Tizen::App::App::GetInstance()->GetAppResourcePath();
@@ -43,20 +39,31 @@ Tizen::Base::Object* CantataNode::Run(void) {
     int ret = 0;
 	void* handle;
 	int (*call_nodejs)(int, char**);
+	int length;
 	char* error;
+	char* args;
 
     sprintf(app_path, "%ls", (const wchar_t*) appName.GetPointer());
     sprintf(node_path, "%ls%s", resPath.GetPointer(), NODE_EXECUTABLE);
     sprintf(js_path, "%ls%s", resPath.GetPointer(), JS_SCRIPT);
 
-    argv2[0] = strdup(app_path);
-    argv2[1] = strdup(js_path);
+
+    args = (char*) malloc( strlen( node_path ) + strlen( js_path ) + 2 );
+    argv2 = (char**) malloc( 2 * sizeof( char* ) );
+
+    argv2[0] = args;
+    strcpy( args, node_path );
+    argv2[1] = args + strlen( node_path ) + 1;
+    strcpy( args + strlen( node_path ) + 1, js_path );
 
     isRunningThread = true;
 
+    AppLog( "Node: %s", argv2[0] );
+    AppLog( "App: %s", argv2[1] );
 
-#ifdef NODE_STATIC 
-    ret = cantata_main(2, argv2);
+#ifdef NODE_STATIC
+    AppLog( "Static call node..." );
+    ret = cantata_main( 2, argv2 );
 #else
     handle = dlopen(node_path, RTLD_LAZY);
     if (handle == NULL) {
@@ -64,7 +71,6 @@ Tizen::Base::Object* CantataNode::Run(void) {
         return null;
     }
 
-    AppLog("Calling main func");
     // TODO: how to stop node thread?
     call_nodejs = (int (*)(int, char**))dlsym(handle, "cantata_main");
 
@@ -73,17 +79,14 @@ Tizen::Base::Object* CantataNode::Run(void) {
         dlclose(handle);
         return null;
     }
-    AppLog("Calling node");
+    AppLog( "Dynamic call node..." );
     ret = call_nodejs(2, argv2);
     dlclose(handle);
 #endif
+    AppLog( "Node return %d", ret );
     return null;
 }
 
-void CantataNode::stopService() {
-    // FIXME: do not stop on purpose
-    isRunningThread = false;
-}
 
 bool CantataNode::isRunning() {
     return isRunningThread;

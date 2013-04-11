@@ -25,7 +25,7 @@ public:
 
 // Implementation
 protected:
-	int static const SHOW_TIME = 3000;
+	int static const SHOW_TIME = 2000;
 
 	Tizen::Base::Runtime::Timer __pTimer;
 

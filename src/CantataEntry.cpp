@@ -1,7 +1,7 @@
 //
 // This file contains the Tizen application entry point.
 //
-#include "cantata.h"
+#include "Cantata.h"
 
 using namespace Tizen::Base;
 using namespace Tizen::Base::Collection;

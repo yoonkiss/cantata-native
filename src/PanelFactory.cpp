@@ -1,19 +1,19 @@
-#include "cantataPanelFactory.h"
+#include "PanelFactory.h"
 #include <FUi.h>
 
 using namespace Tizen::Ui::Scenes;
 
 
-cantataPanelFactory::cantataPanelFactory(void)
+PanelFactory::PanelFactory(void)
 {
 }
 
-cantataPanelFactory::~cantataPanelFactory(void)
+PanelFactory::~PanelFactory(void)
 {
 }
 
 Tizen::Ui::Controls::Panel*
-cantataPanelFactory::CreatePanelN(const Tizen::Base::String& panelId, const Tizen::Ui::Scenes::SceneId& sceneId)
+PanelFactory::CreatePanelN(const Tizen::Base::String& panelId, const Tizen::Ui::Scenes::SceneId& sceneId)
 {
 	SceneManager* pSceneManager = SceneManager::GetInstance();
 	AppAssert(pSceneManager);

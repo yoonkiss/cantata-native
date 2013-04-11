@@ -1,6 +1,6 @@
-#include "cantataFrame.h"
-#include "cantataFormFactory.h"
-#include "cantataPanelFactory.h"
+#include "MainFrame.h"
+#include "FormFactory.h"
+#include "PanelFactory.h"
 #include "AppResourceId.h"
 
 using namespace Tizen::Base;
@@ -8,21 +8,21 @@ using namespace Tizen::Ui;
 using namespace Tizen::Ui::Controls;
 using namespace Tizen::Ui::Scenes;
 
-cantataFrame::cantataFrame(void)
+MainFrame::MainFrame(void)
 {
 }
 
-cantataFrame::~cantataFrame(void)
+MainFrame::~MainFrame(void)
 {
 }
 
 result
-cantataFrame::OnInitializing(void)
+MainFrame::OnInitializing(void)
 {
 	// Prepare Scene management.
 	SceneManager* pSceneManager = SceneManager::GetInstance();
-	static cantataFormFactory formFactory;
-	static cantataPanelFactory panelFactory;
+	static FormFactory formFactory;
+	static PanelFactory panelFactory;
 	pSceneManager->RegisterFormFactory(formFactory);
 	pSceneManager->RegisterPanelFactory(panelFactory);
 	pSceneManager->RegisterScene(L"workflow");
@@ -30,17 +30,13 @@ cantataFrame::OnInitializing(void)
 	// Goto the scene.
 	result r = pSceneManager->GoForward(SceneTransitionId(TR_SPLASH));
 	
-
-	// TODO: Add your initialization code here
 	return r;
 }
 
 result
-cantataFrame::OnTerminating(void)
+MainFrame::OnTerminating(void)
 {
 	result r = E_SUCCESS;
 
-	// TODO:
-	// Add your termination code here
 	return r;
 }
