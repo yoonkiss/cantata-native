@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Manifest xmlns="http://schemas.tizen.org/2012/12/manifest">
-    <Id>hqcXbNwT4c</Id>
+    <Id>cantata123</Id>
     <Version>1.0.0</Version>
     <Type>C++App</Type>
     <Requirements>
@@ -15,11 +15,11 @@
             <Privilege>http://tizen.org/privilege/content.write</Privilege>
             <Privilege>http://tizen.org/privilege/contact.read</Privilege>
         </Privileges>
-        <UiApp Main="True" MenuIconVisible="True" Name="cantata">
+        <UiApp LaunchingHistoryVisible="False" Main="True" MenuIconVisible="True" Name="cantata">
             <UiScalability BaseScreenSize="Normal" CoordinateSystem="Logical" LogicalCoordinate="720"/>
             <UiTheme SystemTheme="White"/>
             <DisplayNames>
-                <DisplayName Locale="eng-GB">cantata</DisplayName>
+                <DisplayName Locale="eng-GB">Cantata</DisplayName>
             </DisplayNames>
             <Icons>
                 <Icon Section="MainMenu" Type="Xhigh">mainmenu.png</Icon>

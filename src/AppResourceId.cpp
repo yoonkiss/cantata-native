@@ -1,0 +1,33 @@
+#include "AppResourceId.h"
+
+const wchar_t* FRM_MAIN = L"FRM_MAIN";
+const wchar_t* FRM_SPLASH = L"FRM_SPLASH";
+const wchar_t* Header = L"Header";
+const wchar_t* IDC_BTN_CANCEL = L"IDC_BTN_CANCEL";
+const wchar_t* IDC_BTN_CONFIRM = L"IDC_BTN_CONFIRM";
+const wchar_t* IDC_BTN_CONNECT = L"IDC_BTN_CONNECT";
+const wchar_t* IDC_BUTTON1 = L"IDC_BUTTON1";
+const wchar_t* IDC_BUTTON2 = L"IDC_BUTTON2";
+const wchar_t* IDC_CONFIRM = L"IDC_CONFIRM";
+const wchar_t* IDC_GALLERY1 = L"IDC_GALLERY1";
+const wchar_t* IDC_GALLERY2 = L"IDC_GALLERY2";
+const wchar_t* IDC_GALLERY3 = L"IDC_GALLERY3";
+const wchar_t* IDC_LABEL1 = L"IDC_LABEL1";
+const wchar_t* IDC_LABEL2 = L"IDC_LABEL2";
+const wchar_t* IDC_AUTHENTICATION = L"IDC_AUTHENTICATION";
+const wchar_t* IDC_CODE = L"IDC_CODE";
+const wchar_t* IDC_SYNCING = L"IDC_SYNCING";
+const wchar_t* IDC_TITLE = L"IDC_TITLE";
+const wchar_t* IDC_ANIMATE1 = L"IDC_ANIMATE1";
+const wchar_t* IDC_ANIMATE2 = L"IDC_ANIMATE2";
+const wchar_t* IDC_ANIMATE3 = L"IDC_ANIMATE3";
+const wchar_t* IDC_ANIMATE4 = L"IDC_ANIMATE4";
+const wchar_t* IDC_ANIMATE5 = L"IDC_ANIMATE5";
+const wchar_t* IDC_EDITFIELD1 = L"IDC_EDITFIELD1";
+const wchar_t* IDC_LBL_PORT = L"IDC_LBL_PORT";
+const wchar_t* IDC_PORT = L"IDC_PORT";
+const wchar_t* IDC_TEXTBOX1 = L"IDC_TEXTBOX1";
+const wchar_t* SCENE_MAIN = L"SCENE_MAIN";
+const wchar_t* SCENE_SPLASH = L"SCENE_SPLASH";
+const wchar_t* TR_MAIN = L"TR_MAIN";
+const wchar_t* TR_SPLASH = L"TR_SPLASH";

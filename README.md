@@ -1,3 +1,8 @@
+cantata-native
+==============
+
+Test
+=======
 ### cantata native application
 
 How to launch cantata-native application to a tizen target:
@@ -61,7 +66,5 @@ How to launch cantata-native application to a tizen target:
      $ sdb forward tcp:3000 tcp:3000
      
      connect to localhost:3000 with your browser
-
-
 
 
