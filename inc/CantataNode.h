@@ -5,12 +5,15 @@
 #include <FApp.h>
 
 
-class CantataNode {
+class CantataNode : public Tizen::Base::Runtime::Thread {
 public:
     CantataNode(void);
     virtual ~CantataNode(void);
+    result Construct(void);
+
 
     Tizen::Base::Object* Run(void);
+    void stopService();
 
     bool isRunning();
 

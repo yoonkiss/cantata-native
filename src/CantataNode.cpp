@@ -8,6 +8,7 @@
 #include "CantataNode.h"
 
 static const char *NODE_EXECUTABLE = "node";
+static const char *APP_EXECUTABLE = "bin/cantata.exe";
 static const char *JS_SCRIPT = "app.js";
 
 #ifdef NODE_STATIC
@@ -31,7 +32,7 @@ CantataNode::~CantataNode(void) {
 Tizen::Base::Object* CantataNode::Run(void) {
     char **argv2;
 
-    Tizen::Base::String appName = Tizen::App::App::GetInstance()->GetAppRootPath() + Tizen::App::App::GetInstance()->GetAppName();
+    Tizen::Base::String appName = Tizen::App::App::GetInstance()->GetAppRootPath();
     Tizen::Base::String resPath = Tizen::App::App::GetInstance()->GetAppResourcePath();
     char app_path[512];
     char js_path[512];
@@ -44,7 +45,7 @@ Tizen::Base::Object* CantataNode::Run(void) {
 	char* args;
 
     sprintf(app_path, "%ls", (const wchar_t*) appName.GetPointer());
-    sprintf(node_path, "%ls%s", resPath.GetPointer(), NODE_EXECUTABLE);
+    sprintf(node_path, "%ls%s", appName.GetPointer(), APP_EXECUTABLE);
     sprintf(js_path, "%ls%s", resPath.GetPointer(), JS_SCRIPT);
 
 
@@ -87,6 +88,10 @@ Tizen::Base::Object* CantataNode::Run(void) {
     return null;
 }
 
+void CantataNode::stopService() {
+    // FIXME: do not stop on purpose
+    isRunningThread = false;
+}
 
 bool CantataNode::isRunning() {
     return isRunningThread;

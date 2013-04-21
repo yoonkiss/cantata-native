@@ -46,7 +46,7 @@ mkdir -p "$TARGET/bin"
 
 cp $LIB_NODE $DIR_HOME/lib/libnode.so
 echo "Linking..."
-i386-linux-gnueabi-g++ -o"$TARGET/cantata.exe" $O_LIST -L"$DIR_HOME/lib" -Xlinker --as-needed -pie -lpthread -Xlinker -rpath=\$ORIGIN/../lib --sysroot="$SYSROOT" -L"$LIB_TIZEN" -L"$LIB_OSP" -losp-appfw -losp-uifw -losp-image -losp-json -losp-ime -losp-net -lpthread -losp-content -losp-locations -losp-telephony -losp-uix -losp-media -losp-messaging -losp-web -losp-social -losp-wifi -losp-bluetooth -losp-nfc -losp-face -losp-speech-tts -losp-speech-stt -losp-shell -losp-shell-core -lxml2 -losp-vision -ldl -lnode
+i386-linux-gnueabi-g++ -o"$TARGET/cantata.exe" $O_LIST -L"$DIR_HOME/lib" -Xlinker --as-needed -pie -lpthread -Xlinker -rpath=/opt/apps/cantata123/lib --sysroot="$SYSROOT" -L"$LIB_TIZEN" -L"$LIB_OSP" -losp-appfw -losp-uifw -losp-image -losp-json -losp-ime -losp-net -lpthread -losp-content -losp-locations -losp-telephony -losp-uix -losp-media -losp-messaging -losp-web -losp-social -losp-wifi -losp-bluetooth -losp-nfc -losp-face -losp-speech-tts -losp-speech-stt -losp-shell -losp-shell-core -lxml2 -losp-vision -ldl -lnode
 
 echo "cp $DIR_HOME/manifest.xml $MANIFEST"
 cp $DIR_HOME/manifest.xml $MANIFEST
